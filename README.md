@@ -17,6 +17,12 @@ don't already have them.
 
 ## Setup
 
+run bundle install to install backend
+run npm install --prefix client to install the frontend
+
+rails s to start the server
+npm start --prefix client to start the front end
+
 Start by **cloning** (not forking) the project template repository and removing
 the remote:
 
