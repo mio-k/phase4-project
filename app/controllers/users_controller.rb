@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :authorize
+    before_action :authorize, only: [:show]
     def create
         user = User.find_by(username: params[:username])
         if user&.authenticate(params[:password])
@@ -9,6 +9,11 @@ class UsersController < ApplicationController
             render json: { error: "Invalid username or password"}, status: :unauthorized
         end
     end
+    def show
+        user = User.find_by(id: session[:user_id])
+        render json: user
+    end
+
 
     private
     def authorize
