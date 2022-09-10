@@ -1,7 +1,10 @@
 class ItemsController < ApplicationController
+rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+
     def index
         items = Item.all
-        render json: items
+        render json: items, only: [:name]
     end
     def show
         item = find_item
@@ -28,5 +31,11 @@ class ItemsController < ApplicationController
     end
     def item_params
         params.permit(:name, :description, :user_id)
+    end
+    def render_not_found_response
+        render json: {error: "Item not found"}, status: :not_found 
+    end
+    def render_unprocessable_entity_response(exception)
+        render json: {errors: exception.record.errors.full_messages}, status: :unprocessable_entity 
     end
 end

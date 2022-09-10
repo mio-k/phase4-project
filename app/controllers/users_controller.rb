@@ -1,26 +1,33 @@
 class UsersController < ApplicationController
     before_action :authorize, only: [:show]
+rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
+
     def create
-        user = User.find_by(username: params[:username])
-        if user&.authenticate(params[:password])
-            session[:userid] = user.id 
+        user = User.create(user_params)
+        if user.valid?
             render json: user, status: :created
         else
-            render json: { error: "Invalid username or password"}, status: :unauthorized
+            render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
         end
     end
+    
     def show
         user = User.find_by(id: session[:user_id])
         render json: user
     end
+
     def index
         users = User.all
-        render json: users, include: :dog, :items
+        render json: users, include: :dog
     end
     def update
         user = find_user
-        user.update(user_params)
-        render json: user
+        if user.update(user_params)
+            render json: user
+        else
+            render json: {error: "update failed"}, status: :unprocessable_entity
+        end
     end
 
     private
@@ -31,6 +38,12 @@ class UsersController < ApplicationController
         User.find(params[:id])
     end
     def user_params
-        params.permit(:firstname, :lastname, :username, :password_digest)
+        params.permit(:firstname, :lastname, :username, :password) # pass1234 => 23ej2iodm893md34i9cn3ucin34ic
+    end
+    def render_not_found_response
+        render json: {error: "User not found"}, status: :not_found 
+    end
+    def render_unprocessable_entity(exception)
+        render json: {errors: exception.record.errors.full_messages}, status: :unprocessable_entity 
     end
 end
