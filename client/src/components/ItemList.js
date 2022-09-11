@@ -20,6 +20,7 @@ function ItemList(){
             style={{ display: "block", margin: "1rem 0" }}
             to={`/items/${item.id}`}
             key={item.id}
+            item={item}
             >
             <li>{item.name}</li>
           </Link>

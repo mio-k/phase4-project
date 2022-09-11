@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button } from "../styles";
+import { Button, Input } from "../styles";
 
 function NewItemForm({ onAddItem }) {
   const [formData, setFormData] = useState({
@@ -37,9 +37,9 @@ function NewItemForm({ onAddItem }) {
     <form className="order-form" onSubmit={handleSubmit}>
     <h3>Add New Free Item to Share</h3>
     <p>Got a dog care item you don't need anymore? Offer it to your friends.</p>
-      Item: <input type="text" name="name" value={formData.name} onChange={handleChange}/><br/>
-      Description: <input type="text" name="description" value={formData.description} onChange={handleChange}/><br/>
-      Category: <input type="text" name="category" value={formData.category} onChange={handleChange}/><br/>
+      Item: <Input type="text" name="name" value={formData.name} onChange={handleChange}/><br/>
+      Description: <Input type="text" name="description" value={formData.description} onChange={handleChange}/><br/>
+      Category: <Input type="text" name="category" value={formData.category} onChange={handleChange}/><br/>
     <Button type="submit">Add Free Item</Button>
   </form>
   );

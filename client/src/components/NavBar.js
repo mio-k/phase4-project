@@ -14,7 +14,7 @@ function NavBar({ user, setUser }) {
 
   return (
     <Wrapper>
-        <Link to="/">Dogpod Item Exhange</Link>
+        {/* <Link to="/">Dogpod Item Exhange</Link> */}
       <Nav>
         <Button as={Link} to="/userlist">
           Members

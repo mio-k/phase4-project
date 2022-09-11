@@ -34,7 +34,7 @@ const ButtonBase = styled.button`
 const FillButton = styled(ButtonBase)`
   background-color: var(--main);
   color: var(--accent);
-
+  transition: 0.2s all;
   &:hover {
     opacity: 0.9;
   }

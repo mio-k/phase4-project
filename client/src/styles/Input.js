@@ -6,10 +6,12 @@ const Input = styled.input`
   border-color: #dbdbdb;
   -webkit-appearance: none;
   max-width: 100%;
-  width: 100%;
+  width: 40%;
   font-size: 1rem;
   line-height: 1.5;
-  padding: 4px;
+  padding: 2px;
+  transition: all 0.2s;
+  margin: 0.5rem
 `;
 
 export default Input;
