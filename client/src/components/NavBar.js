@@ -14,16 +14,26 @@ function NavBar({ user, setUser }) {
 
   return (
     <Wrapper>
-      <Logo>
         <Link to="/">Dogpod Item Exhange</Link>
-      </Logo>
       <Nav>
-        <Button as={Link} to="/new">
-          New Recipe
+        <Button as={Link} to="/userlist">
+          Members
+        </Button>
+        <Button as={Link} to="/itemlist">
+          Free Items
+        </Button>
+        <Button as={Link} to="/doglist">
+          Member Dogs
+        </Button>
+        <Button as={Link} to="/newitemform">
+          New Item
         </Button>
         <Button variant="outline" onClick={handleLogoutClick}>
           Logout
         </Button>
+        {/* <NavLink className="nav" to="/dogs">Member Dogs</NavLink>
+        <NavLink className="nav" to="/users">Member Owners</NavLink>
+        <NavLink className="nav" to="/items">Free Items</NavLink> */}
       </Nav>
     </Wrapper>
   );
@@ -35,20 +45,6 @@ const Wrapper = styled.header`
   align-items: center;
   padding: 8px;
 `;
-
-const Logo = styled.h1`
-  font-family: "Permanent Marker", cursive;
-  font-size: 3rem;
-  color: deeppink;
-  margin: 0;
-  line-height: 1;
-
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-`;
-
 const Nav = styled.nav`
   display: flex;
   gap: 4px;

@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Route, RouteProps, Outlet } from "react-router-dom";
+import { Route, Routes, Outlet } from "react-router-dom";
 import NavBar from "./NavBar";
 import Login from "../pages/Login";
-import RecipeList from "../pages/RecipeList";
-import NewRecipe from "../pages/NewRecipe";
+import DogList from "./DogList";
+import UserList from "./UserList";
+import ItemList from "./ItemList"
+import NewItemForm from "./NewItemForm";
+
 
 function App() {
   const [user, setUser] = useState(null);
@@ -27,12 +30,7 @@ function App() {
           <Route path="doglist" element={<DogList />} />
           <Route path="userlist" element={<UserList />} />
           <Route path="itemList" element={<ItemList />} />
-          {/* <Route path="/new">
-            <NewRecipe user={user} />
-          </Route>
-          <Route path="/">
-            <RecipeList />
-          </Route> */}
+          <Route path="newitemform" element={<NewItemForm />}/>
         </Routes>
         <Outlet />
       </main>

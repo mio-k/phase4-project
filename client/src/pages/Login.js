@@ -9,15 +9,16 @@ function Login({ onLogin }) {
 
   return (
     <Wrapper>
-      <Logo>Dogpod doggiecare goods exchange</Logo>
+      <h1>Dogpod Exchange</h1>
+      <p>Please log in to see the members only content.</p>
       {showLogin ? (
         <>
           <LoginForm onLogin={onLogin} />
           <Divider />
           <p>
-            Don't have an account? &nbsp;
+            Want to join the DogPod? &nbsp;
             <Button color="secondary" onClick={() => setShowLogin(false)}>
-              Sign Up
+              Create Account
             </Button>
           </p>
         </>
@@ -36,13 +37,6 @@ function Login({ onLogin }) {
     </Wrapper>
   );
 }
-
-const Logo = styled.h1`
-  font-family: "Permanent Marker", cursive;
-  font-size: 3rem;
-  color: deeppink;
-  margin: 8px 0 16px;
-`;
 
 const Wrapper = styled.section`
   max-width: 500px;

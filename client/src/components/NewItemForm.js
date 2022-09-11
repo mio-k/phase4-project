@@ -1,9 +1,19 @@
 import React, { useState } from "react";
-import { Button, Error, Input, FormField, Label, Textarea } from "../styles";
+import { Button } from "../styles";
 
-function NewItemForm({ onLogin }) {
-  const [name, setname] = useState("");
-  const [description, setDescription] = useState("");
+function NewItemForm({ onAddItem }) {
+  const [formData, setFormData] = useState({
+    name: "",
+    description: "",
+    tag_id: 0
+  })
+
+  function handleChange(e){
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    })
+  };
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -12,11 +22,7 @@ function NewItemForm({ onLogin }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        name,
-        description,
-        tag_id,
-      }),
+      body: JSON.stringify(formData),
     })
     .then((r) => r.json)
     .then((formData) => onAddItem(formData))
@@ -34,7 +40,7 @@ function NewItemForm({ onLogin }) {
       Item: <input type="text" name="name" value={formData.name} onChange={handleChange}/><br/>
       Description: <input type="text" name="description" value={formData.description} onChange={handleChange}/><br/>
       Category: <input type="text" name="category" value={formData.category} onChange={handleChange}/><br/>
-    <button type="submit">Add Free Item</button>
+    <Button type="submit">Add Free Item</Button>
   </form>
   );
 }
