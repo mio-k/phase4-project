@@ -23,8 +23,8 @@ function SignUpForm({ onLogin }) {
         username,
         password,
         password_confirmation: passwordConfirmation,
-        image_url: imageUrl,
-        bio,
+        firstname,
+        lastname,
       }),
     }).then((r) => {
       setIsLoading(false);
@@ -69,21 +69,21 @@ function SignUpForm({ onLogin }) {
         />
       </FormField>
       <FormField>
-        <Label htmlFor="imageUrl">Profile Image</Label>
+        <Label htmlFor="firstname">First Name</Label>
         <Input
           type="text"
-          id="imageUrl"
-          value={imageUrl}
-          onChange={(e) => setImageUrl(e.target.value)}
+          id="firstname"
+          value={firstname}
+          onChange={(e) => setFirstname(e.target.value)}
         />
       </FormField>
       <FormField>
-        <Label htmlFor="bio">Bio</Label>
-        <Textarea
-          rows="3"
-          id="bio"
-          value={bio}
-          onChange={(e) => setBio(e.target.value)}
+        <Label htmlFor="lastname">Last Name</Label>
+        <Input
+          type="text"
+          id="lastname"
+          value={lastname}
+          onChange={(e) => setLastname(e.target.value)}
         />
       </FormField>
       <FormField>
