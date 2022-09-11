@@ -12,8 +12,13 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
         end
     end
     
-    def show
+    def authenticate
         user = User.find_by(id: session[:user_id])
+        render json: user
+    end
+
+    def show
+        user = find_user
         render json: user
     end
 

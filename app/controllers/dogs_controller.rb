@@ -4,11 +4,11 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_resp
 
     def index
         dogs = Dog.all
-        render json: dogs, only: [:name, :breed, :age, :color]
+        render json: dogs, only: [:id, :name, :breed, :age, :color]
     end
     def show
         dog = find_dog
-        render json: dog, only: [:name, :breed, :age, :color]
+        render json: dog, only: [:id, :name, :breed, :age, :color]
     end
 
     def create

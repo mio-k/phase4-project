@@ -20,6 +20,7 @@ function DogList() {
           style={{ display: "block", margin: "1rem 0" }}
           to={`/dogs/${dog.id}`}
           key={dog.id}
+          dog={dog}
           >
           <li>{dog.name}</li>
         </Link>

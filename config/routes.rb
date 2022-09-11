@@ -2,10 +2,10 @@ Rails.application.routes.draw do
   post "/signup", to: "users#create"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
-  get "/me", to: "users#show"
-  get "/users", to: "users#index"
-  patch "/users/:id", to: "users#update"
+  # since I want to be able to display each member's information, i reserve users#show for that purpose. Instead of "get "/me", to: "users#show"" I'm setting up authorized route below.
+  get "/authorized", to: "users#authenticate"
   
+  resources :users, only: [:index, :show, :update]
   resources :dogs, only: [:index, :show, :create, :update]
   resources :items
   resources :tags, only: [:show]

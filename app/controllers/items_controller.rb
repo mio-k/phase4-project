@@ -4,7 +4,7 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_resp
 
     def index
         items = Item.all
-        render json: items, only: [:name]
+        render json: items, only: [:id, :name]
     end
     def show
         item = find_item

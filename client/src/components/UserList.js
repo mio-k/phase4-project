@@ -20,6 +20,7 @@ function UserList(){
             style={{ display: "block", margin: "1rem 0" }}
             to={`/users/${user.id}`}
             key={user.id}
+            user={user}
             >
             <li>{user.firstname}</li>
           </Link>
