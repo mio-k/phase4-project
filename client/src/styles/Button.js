@@ -28,6 +28,7 @@ const ButtonBase = styled.button`
   border: 1px solid transparent;
   border-radius: 6px;
   padding: 8px 16px;
+  margin: 8px;
   text-decoration: none;
 `;
 

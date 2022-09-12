@@ -1,6 +1,7 @@
 import React, {useState} from "react"
 import EditItem from "./EditItem";
 import {useNavigate} from "react-router-dom"
+import { Button } from "../styles";
 
 function Item(item, handleUpdateItem, onDeleteItem){
     let navigate = useNavigate();
@@ -22,16 +23,17 @@ function Item(item, handleUpdateItem, onDeleteItem){
         {item ?  (
           <div>
           <p>Item: {item.name}</p>
-          <p>Quantity: {item.description}</p>
-          <p>Type: {item.category}</p>
+          <p>Description: {item.description}</p>
+          <p>Offered by: {item.user.firstname}</p>
+          <p>Category: {item.tags.category}</p>
           {isEditing ? (
               <EditItem item={item} onUpdateItem={onUpdateItem} />
             ) : ("")
           }
-          <button onClick={handleDeleteClick}>Delete Item</button>
-          <button onClick={() => setIsEditing((isEditing) => !isEditing)}>
+          <Button onClick={handleDeleteClick}>Delete Item</Button>
+          <Button onClick={() => setIsEditing((isEditing) => !isEditing)}>
                Edit Item
-          </button> </div>
+          </Button> </div>
           ): <p>No item from this user</p>}
       </div>
     );

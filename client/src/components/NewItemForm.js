@@ -39,7 +39,13 @@ function NewItemForm({ onAddItem }) {
     <p>Got a dog care item you don't need anymore? Offer it to your friends.</p>
       Item: <Input type="text" name="name" value={formData.name} onChange={handleChange}/><br/>
       Description: <Input type="text" name="description" value={formData.description} onChange={handleChange}/><br/>
-      Category: <Input type="text" name="category" value={formData.category} onChange={handleChange}/><br/>
+      Category: <select onChange={handleChange} name="category" value={formData.category} >
+                  <option value="walking">Walking</option>
+                  <option value="grooming">Grooming</option>
+                  <option value="food">Food</option>
+                  <option value="puppy_care">Puppy Care</option>
+                  <option value="play">Play</option>
+                </select><br></br>
     <Button type="submit">Add Free Item</Button>
   </form>
   );
