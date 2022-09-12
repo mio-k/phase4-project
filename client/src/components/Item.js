@@ -24,8 +24,8 @@ function Item(item, handleUpdateItem, onDeleteItem){
           <div>
           <p>Item: {item.name}</p>
           <p>Description: {item.description}</p>
-          <p>Offered by: {item.user.firstname}</p>
-          <p>Category: {item.tags.category}</p>
+          {/* <p>Offered by: {item.user.firstname}</p>
+          <p>Category: {item.tags.category}</p> */}
           {isEditing ? (
               <EditItem item={item} onUpdateItem={onUpdateItem} />
             ) : ("")
