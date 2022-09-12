@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :authorize, only: [:show]
+    before_action :authorize, only: [:authenticate]
 rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
 
