@@ -1,7 +1,7 @@
-import React from "react"
+import React, {useState} from "react"
 import {useParams, useNavigate } from "react-router-dom";
 
-function EditItem(item, handleUpdateItem){
+function EditItem(item, onUpdateItem){
     let navigate = useNavigate();
     const [revisedData, setRevisedData] = useState({
         name: item.name,

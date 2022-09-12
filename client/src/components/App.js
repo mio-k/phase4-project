@@ -6,7 +6,11 @@ import DogList from "./DogList";
 import UserList from "./UserList";
 import ItemList from "./ItemList"
 import NewItemForm from "./NewItemForm";
-
+import NewDogForm from "./NewDogForm";
+import User from "./User";
+import Dog from "./Dog";
+import Item from "./Item";
+import EditItem from "./EditItem";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -31,6 +35,12 @@ function App() {
           <Route path="userlist" element={<UserList />} />
           <Route path="itemList" element={<ItemList />} />
           <Route path="newitemform" element={<NewItemForm />}/>
+          <Route path="newdogform" element={<NewDogForm />} />
+          <Route path="users/:id" element={<User />} />
+          <Route path="dogs/:id" element={<Dog />} />
+          <Route path="items/:id" element={<Item />} />
+          <Route path="items/:id/edititem" element={<EditItem />} />
+
         </Routes>
         <Outlet />
       </main>

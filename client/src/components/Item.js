@@ -1,17 +1,17 @@
-import React from "react"
+import React, {useState} from "react"
 import EditItem from "./EditItem";
 import {useNavigate} from "react-router-dom"
 
 function Item(item, handleUpdateItem, onDeleteItem){
-
     let navigate = useNavigate();
+    const [isEditing, setIsEditing] = useState(false);
 
     function handleDeleteClick() {
         fetch(`/items/:id`, {
           method: "DELETE",
         })
         .then(() => navigate(`/items`))
-          onDeleteItem(item_id);
+          onDeleteItem(item.id);
       }
     function onUpdateItem(updatedItem) {
         handleUpdateItem(updatedItem);
@@ -20,12 +20,12 @@ function Item(item, handleUpdateItem, onDeleteItem){
     return(
         <div>
         {item ?  (
-          <div><h2>Item {item_id} from {user.firstname}</h2>
+          <div>
           <p>Item: {item.name}</p>
           <p>Quantity: {item.description}</p>
           <p>Type: {item.category}</p>
           {isEditing ? (
-              <EditItem item={item} handleUpdateItem={onUpdateItem} />
+              <EditItem item={item} onUpdateItem={onUpdateItem} />
             ) : ("")
           }
           <button onClick={handleDeleteClick}>Delete Item</button>
