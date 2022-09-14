@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import EditItem from "./EditItem";
 import {useNavigate, useParams} from "react-router-dom"
 import { Button } from "../styles";
@@ -6,9 +6,12 @@ import { Button } from "../styles";
 function Item({items, handleUpdateItem, onDeleteItem}){
 
   const {id} = useParams()
-  let item = items.find((itemInArray) => {
-      return itemInArray.id === id;
-  })
+  const [item, setItem] = useState("");
+    useEffect(()=> {
+        fetch(`/items/${id}`)
+        .then(r => r.json())
+        .then(individualItem => setItem(individualItem))
+    }, [])
 
     let navigate = useNavigate();
     const [isEditing, setIsEditing] = useState(false);
@@ -30,8 +33,8 @@ function Item({items, handleUpdateItem, onDeleteItem}){
           <div>
           <p>Item: {item.name}</p>
           <p>Description: {item.description}</p>
-          {/* <p>Offered by: {item.user.firstname}</p>
-          <p>Category: {item.tags.category}</p> */}
+          <p>Offered by: {item.user.firstname}</p>
+          <p>Category: {item.tags.category}</p>
           {isEditing ? (
               <EditItem item={item} onUpdateItem={onUpdateItem} />
             ) : ("")

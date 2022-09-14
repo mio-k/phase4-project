@@ -14,9 +14,7 @@ import EditItem from "./EditItem";
 
 function App() {
   const [user, setUser] = useState(null);
-  const [dogs, setDogs] = useState([]);
   const [items, setItems] = useState([]);
-  const [users, setUsers] = useState([]);
   const [tags, setTags] = useState([]);
 
   useEffect(() => {
@@ -27,11 +25,6 @@ function App() {
       }
     });
   }, []);
-  useEffect(() => {
-    fetch("/dogs")
-      .then((r) => r.json())
-      .then((allDogs) => setDogs(allDogs));
-  }, []);
 
   useEffect(() => {
     fetch("/items")
@@ -39,39 +32,33 @@ function App() {
       .then((allItems) => setItems(allItems));
   }, []);
 
-  useEffect (()=> {
-    fetch("/users")
-    .then((r) =>r.json())
-    .then((allUsers) => setUsers(allUsers))
-  }, [])
-
   useEffect (() => {
     fetch('/tags')
     .then((r) => r.json())
     .then((allTags) => setTags(allTags))
   }, [])
 
-  if (!user) return <Login onLogin={setUser} />;
-
   function onAddItem(newItem){
     setItems((prevItems) => {
       return [...prevItems, newItem]
     })
   }
+  if (!user) return <Login onLogin={setUser} />;
+
 
   return (
     <>
       <NavBar user={user} setUser={setUser} />
       <main>
         <Routes>
-          <Route path="doglist" element={<DogList dogs={dogs}/>} />
-          <Route path="userlist" element={<UserList users={users} />} />
-          <Route path="itemList" element={<ItemList items={items} tags={tags} />} />
+          <Route path="doglist" element={<DogList/>} />
+          <Route path="userlist" element={<UserList />} />
+          <Route path="itemList" element={<ItemList items={items}/>} />
           <Route path="newitemform" element={<NewItemForm onAddItem={onAddItem} user={user} tags={tags}/>}/>
           <Route path="newdogform" element={<NewDogForm />} />
           <Route path="users/:id" element={<User />} />
-          <Route path="dogs/:id" element={<Dog dogs={dogs}/>} />
-          <Route path="items/:id" element={<Item items={items} tags={tags}/>} />
+          <Route path="dogs/:id" element={<Dog/>} />
+          <Route path="items/:id" element={<Item/>} />
           <Route path="items/:id/edititem" element={<EditItem />} />
 
         </Routes>

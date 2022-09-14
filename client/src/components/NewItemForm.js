@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Input } from "../styles";
 
-function NewItemForm({ onAddItem, user }) {
+function NewItemForm({onAddItem, user, tags}) {
   const [formData, setFormData] = useState({
     name: "",
     description: "",

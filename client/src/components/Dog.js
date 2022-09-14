@@ -1,11 +1,15 @@
-import React from "react"
+import React, { useEffect, useState } from "react";
 import {useParams} from "react-router-dom"
 
-function Dog({dogs}){
+function Dog(){
     const {id} = useParams()
-    let dog = dogs.find((dogInArray) => {
-        return dogInArray.id === id;
-    })
+    const [dog, setDog] = useState("");
+    useEffect(()=> {
+        fetch(`/dogs/${id}`)
+        .then(r => r.json())
+        .then(individualDog => setDog(individualDog))
+    }, [])
+
     return(
         <>
         <h2>Dog {dog.id}</h2>
@@ -13,7 +17,7 @@ function Dog({dogs}){
         <p>Breed: {dog.breed}</p>
         <p>Age: {dog.age} years old</p>
         <p>Color: {dog.color}</p>
-        <p>Owner: {dog.user.firstname}</p>
+        {/* <p>Owner: {dog.user.firstname}</p> */}
         </>
     )
 }

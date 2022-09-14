@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 
-function UserList({users}){
-console.log(users)
+function UserList(){
+
+  const [users, setUsers] = useState([]);
+
+  useEffect (()=> {
+    fetch("/users")
+    .then((r) =>r.json())
+    .then((allUsers) => setUsers(allUsers))
+  }, [])
+
     return(
         <div className="list">
         <h2>Members</h2>
