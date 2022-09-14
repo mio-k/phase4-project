@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Button, Input } from "../styles";
 
-function NewItemForm({ onAddItem }) {
+function NewItemForm({ onAddItem, user }) {
   const [formData, setFormData] = useState({
     name: "",
     description: "",
+    user_id: user.id,
     tag_id: 0
   })
 
@@ -24,7 +25,7 @@ function NewItemForm({ onAddItem }) {
       },
       body: JSON.stringify(formData),
     })
-    .then((r) => r.json)
+    .then((r) => r.json())
     .then((formData) => onAddItem(formData))
     setFormData({
         name: "",

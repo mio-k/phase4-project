@@ -1,15 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link, Outlet } from "react-router-dom";
 
-function DogList() {
-    const [dogs, setDogs] = useState([]);
-
-    useEffect(() => {
-        fetch("/dogs")
-          .then((r) => r.json())
-          .then((allDogs) => setDogs(allDogs));
-      }, []);
-
+function DogList({dogs}) {
+    
     return (
       <div className="list">
       <h2>Member Dogs</h2>

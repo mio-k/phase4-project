@@ -1,14 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link, Outlet } from "react-router-dom";
 
-function ItemList(){
-    const [items, setItems] = useState([]);
-
-    useEffect(() => {
-        fetch("/items")
-          .then((r) => r.json())
-          .then((allItems) => setItems(allItems));
-      }, []);
+function ItemList({items}){
+  
 
     return(
         <div className="list">

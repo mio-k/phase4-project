@@ -1,9 +1,15 @@
 import React, {useState} from "react"
 import EditItem from "./EditItem";
-import {useNavigate} from "react-router-dom"
+import {useNavigate, useParams} from "react-router-dom"
 import { Button } from "../styles";
 
-function Item(item, handleUpdateItem, onDeleteItem){
+function Item({items, handleUpdateItem, onDeleteItem}){
+
+  const {id} = useParams()
+  let item = items.find((itemInArray) => {
+      return itemInArray.id === id;
+  })
+
     let navigate = useNavigate();
     const [isEditing, setIsEditing] = useState(false);
 
