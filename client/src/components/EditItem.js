@@ -24,7 +24,7 @@ function EditItem(item, onUpdateItem){
           .then((r) => r.json())
           .then((revisedData) => {
             onUpdateItem(revisedData)
-            navigate("/items")
+            navigate("/items/${item_id}")
           })
       }
     return(

@@ -45,6 +45,14 @@ function App() {
   }
   if (!user) return <Login onLogin={setUser} />;
 
+  function onDeleteItem(id){
+    setItems((prevItems) => {
+      prevItems.filter(item => {
+        return item.id !== id
+      })
+    })
+  }
+
 
   return (
     <>
@@ -58,7 +66,7 @@ function App() {
           <Route path="newdogform" element={<NewDogForm />} />
           <Route path="users/:id" element={<User />} />
           <Route path="dogs/:id" element={<Dog/>} />
-          <Route path="items/:id" element={<Item/>} />
+          <Route path="items/:id" element={<Item onDeleteItem={onDeleteItem}/>} />
           <Route path="items/:id/edititem" element={<EditItem />} />
 
         </Routes>

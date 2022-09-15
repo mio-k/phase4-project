@@ -19,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
     color:rgb(81, 82, 113)
   }
   a:visited{
-    color:rgb(136, 64, 64)
+    color:rgb(81, 82, 113)
   }
   a:hover{
     color:#147e9b
