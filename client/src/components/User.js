@@ -13,6 +13,9 @@ function User(){
       breed: "",
       age:"",
       color: ""
+    },
+    items: {
+      
     }
   });
 
