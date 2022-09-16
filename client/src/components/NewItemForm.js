@@ -6,7 +6,7 @@ function NewItemForm({onAddItem, user, tags}) {
     name: "",
     description: "",
     user_id: user.id,
-    tag_id: 0
+    tags:""
   })
 
   function handleChange(e){
@@ -30,7 +30,7 @@ function NewItemForm({onAddItem, user, tags}) {
     setFormData({
         name: "",
         description: "",
-        tag_id: 0
+        tags:""
     })
   }
 
