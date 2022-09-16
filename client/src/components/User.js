@@ -24,6 +24,10 @@ function User(){
     .then((individualMember) => setMember(individualMember))
   }, [])
 console.log(member)
+
+function onAddDog(dog){
+  // here I think i need to update the user with the dog info and re-render but not sure how
+}
   return(
     <>
       <h2>Member {member.id}</h2>
@@ -38,7 +42,7 @@ console.log(member)
       <p>Color: {member.dog.color}</p>
       </div>
       :
-        <NewDogForm />
+        <NewDogForm member={member} onAddDog={onAddDog}/>
       }
       <p>Free Items: </p>
       <ul>

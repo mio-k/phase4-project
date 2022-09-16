@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Button, Input } from "../styles";
 
-function NewDogForm({ onAddItem }) {
+function NewDogForm({ member, onAddDog }) {
   const [formData, setFormData] = useState({
     name: "",
     breed: "",
     age: 0,
-    color: ""
+    color: "",
+    user_id: member.id
   })
 
   function handleChange(e){
@@ -26,7 +27,7 @@ function NewDogForm({ onAddItem }) {
       body: JSON.stringify(formData),
     })
     .then((r) => r.json)
-    .then((formData) => onAddItem(formData))
+    .then((formData) => onAddDog(formData))
     setFormData({
         name: "",
         breed: "",
@@ -37,8 +38,7 @@ function NewDogForm({ onAddItem }) {
 
   return (
     <form className="form" onSubmit={handleSubmit}>
-    <h3>Add a new dog</h3>
-    <p>Add your dog's info</p>
+    <h3>Add Your Dog</h3>
       Dog's name: <Input type="text" name="name" value={formData.name} onChange={handleChange}/><br/>
       Breed: <Input type="text" name="breed" value={formData.breed} onChange={handleChange}/><br/>
       Age: <Input type="number" name="age" value={formData.age} onChange={handleChange}/><br/>
