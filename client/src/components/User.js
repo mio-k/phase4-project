@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState }  from "react";
-import {useParams} from "react-router-dom"
+import {useParams, Link} from "react-router-dom"
 
 function User(){
   const {id} = useParams();
@@ -14,9 +14,7 @@ function User(){
       age:"",
       color: ""
     },
-    items: {
-      
-    }
+    items: ([])
   });
 
   useEffect (()=> {
@@ -35,6 +33,17 @@ console.log(member)
       <p>Age: {member.dog.age}</p>
       <p>Color: {member.dog.color}</p>
       <p>Free Items: </p>
+      <ul>
+      {member.items.map((item) => (
+        <Link
+        style={{ display: "block", margin: "1rem 0" }}
+        to={`/items/${item.id}`}
+        key={item.id}
+        >
+        <li>{item.name}</li>
+      </Link>
+      ))}
+      </ul>
     </>
     )
 }

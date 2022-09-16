@@ -6,7 +6,12 @@ import { Button } from "../styles";
 function Item(onDeleteItem){
 
   const {id} = useParams()
-  const [item, setItem] = useState("");
+  const [item, setItem] = useState({
+    name:"",
+    description:"",
+    user:"",
+    tags: ([])
+  });
     useEffect(()=> {
         fetch(`/items/${id}`)
         .then(r => r.json())
@@ -34,7 +39,8 @@ function Item(onDeleteItem){
           <p>Item: {item.name}</p>
           <p>Description: {item.description}</p>
           <p>Offered by: {item.user.firstname}</p>
-          <p>Category: {item.tags.category}</p>
+          <ul>Category: {item.tags.map((tag) =>(
+            <li>{tag.category}</li>))} </ul>
           {isEditing ? (
               <EditItem item={item} onUpdateItem={onUpdateItem} />
             ) : ("")
