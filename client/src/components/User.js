@@ -1,9 +1,10 @@
 
 import React, { useEffect, useState }  from "react";
-import {useParams, Link} from "react-router-dom"
+import {useParams, Link, useNavigate} from "react-router-dom"
 import NewDogForm from "./NewDogForm";
 
 function User(){
+  let navigate = useNavigate();
   const {id} = useParams();
   const [member, setMember] = useState({
     id:0,
@@ -26,7 +27,7 @@ function User(){
 console.log(member)
 
 function onAddDog(dog){
-  // here I think i need to update the user with the dog info and re-render but not sure how
+  navigate(`/dogs/${dog.id}`)
 }
   return(
     <>
@@ -45,6 +46,8 @@ function onAddDog(dog){
         <NewDogForm member={member} onAddDog={onAddDog}/>
       }
       <p>Free Items: </p>
+      {member.items.length !== 0
+      ?
       <ul>
       {member.items.map((item) => (
         <Link
@@ -56,6 +59,9 @@ function onAddDog(dog){
       </Link>
       ))}
       </ul>
+      :
+      <p>This member hasn't offered any items yet.</p>
+      }
     </>
     )
 }

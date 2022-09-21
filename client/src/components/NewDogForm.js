@@ -26,7 +26,7 @@ function NewDogForm({ member, onAddDog }) {
       },
       body: JSON.stringify(formData),
     })
-    .then((r) => r.json)
+    .then((r) => r.json())
     .then((formData) => onAddDog(formData))
     setFormData({
         name: "",

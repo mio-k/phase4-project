@@ -3,7 +3,7 @@ import EditItem from "./EditItem";
 import {useNavigate, useParams} from "react-router-dom"
 import { Button } from "../styles";
 
-function Item(onDeleteItem){
+function Item({onDeleteItem}){
 
   const {id} = useParams()
   const [item, setItem] = useState({
@@ -25,8 +25,10 @@ function Item(onDeleteItem){
         fetch(`/items/${id}`, {
           method: "DELETE",
         })
-        .then(() => navigate(`/itemlist`))
-        .then(onDeleteItem(id))
+        .then(() => {
+          onDeleteItem(id)
+          navigate(`/itemlist`)
+        })
       }
     function onUpdateItem(updatedItem) {
         setItem(updatedItem)

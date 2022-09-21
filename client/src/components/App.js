@@ -47,8 +47,10 @@ function App() {
 
   function onDeleteItem(id){
     setItems((prevItems) => {
-      prevItems.filter(item => {
-        return item.id !== id
+      console.log(prevItems)
+      console.log(id)
+      return prevItems.filter(item => {
+        return item.id != id
       })
     })
   }
