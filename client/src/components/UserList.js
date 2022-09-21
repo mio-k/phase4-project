@@ -17,7 +17,6 @@ function UserList(){
         <p>Choose a member to drill down to their record.</p>
         <ul>
           {users.map((user) => {
-            console.log(user)
             return (
             <Link
             style={{ display: "block", margin: "1rem 0" }}
