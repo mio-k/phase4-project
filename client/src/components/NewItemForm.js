@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Input } from "../styles";
+import { MultiSelect } from "react-multi-select-component";
 
 function NewItemForm({onAddItem, user, tags}) {
   const [formData, setFormData] = useState({
@@ -10,10 +11,25 @@ function NewItemForm({onAddItem, user, tags}) {
   })
   // console.log(tags[0].category)
 
+  const options = [
+    {label: "Walking", value: "walking"},
+    {label: "Grooming", value: "grooming"},
+    {label: "Food", value: "food"},
+    {label: "Puppy Care", value: "puppy_care"},
+    {label: "Play", value: "play"}
+  ];
+  const [selected, setSelected] = useState([]);
+
   function handleChange(e){
     console.log(e.target.value)
-    if (e.target.name == tags) {
-      tags.category.push(e.target.value)
+    if (e.target.name == "tags") {
+      const value = Array.from(e.target.selectedOptions, option => option.value);
+      console.log(value)
+        setFormData({
+          ...formData,
+          [e.target.name]: value,
+        })
+      // tags.category.push(e.target.value)
     } else {
       setFormData({
         ...formData,
@@ -48,7 +64,7 @@ function NewItemForm({onAddItem, user, tags}) {
       Item: <Input type="text" name="name" value={formData.name} onChange={handleChange}/><br/>
       Description: <Input type="text" name="description" value={formData.description} onChange={handleChange}/><br/>
       <p>Category:
-        <select multiple={true} name="tags" onChange={handleChange}>
+        <select multiple={true} name="tags" value={formData.tags} onChange={handleChange}>
           <option value="walking">Walking</option>
           <option value="grooming">Grooming</option>
           <option value="food">Food</option>
@@ -56,6 +72,8 @@ function NewItemForm({onAddItem, user, tags}) {
           <option value="play">Play</option>
         </select>
     </p>
+    {/* <pre>{JSON.stringify(selected)}</pre> */}
+     
     <Button type="submit">Add Free Item</Button>
   </form>
   );
