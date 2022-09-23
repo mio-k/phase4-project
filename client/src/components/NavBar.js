@@ -14,7 +14,6 @@ function NavBar({ setUser }) {
 
   return (
     <Wrapper>
-        {/* <Link to="/">Dogpod Item Exhange</Link> */}
       <Nav>
         <Button as={Link} to="/userlist">
           Members
@@ -31,9 +30,6 @@ function NavBar({ setUser }) {
         <Button variant="outline" onClick={handleLogoutClick}>
           Logout
         </Button>
-        {/* <NavLink className="nav" to="/dogs">Member Dogs</NavLink>
-        <NavLink className="nav" to="/users">Member Owners</NavLink>
-        <NavLink className="nav" to="/items">Free Items</NavLink> */}
       </Nav>
     </Wrapper>
   );

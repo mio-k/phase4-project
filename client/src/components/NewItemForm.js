@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Input } from "../styles";
-import { MultiSelect } from "react-multi-select-component";
+// import { MultiSelect } from "react-multi-select-component";
 
 function NewItemForm({onAddItem, user, tags}) {
   const [formData, setFormData] = useState({
@@ -9,7 +9,6 @@ function NewItemForm({onAddItem, user, tags}) {
     user_id: user.id,
     tags:[]
   })
-  // console.log(tags[0].category)
 
   const options = [
     {label: "Walking", value: "walking"},
@@ -29,7 +28,6 @@ function NewItemForm({onAddItem, user, tags}) {
           ...formData,
           [e.target.name]: value,
         })
-      // tags.category.push(e.target.value)
     } else {
       setFormData({
         ...formData,
