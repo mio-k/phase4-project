@@ -11,6 +11,7 @@ function DogList() {
   
     return (
       <div>
+        <h2>Our Dogs</h2>
         <ul>
         {dogs.map((dog) => (
           <Link

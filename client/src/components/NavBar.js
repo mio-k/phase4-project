@@ -15,7 +15,7 @@ function NavBar({ setUser }) {
   return (
     <Wrapper>
       <Nav>
-        <Button as={Link} to="/userlist">
+        <Button as={Link} to="/">
           Members
         </Button>
         <Button as={Link} to="/itemlist">

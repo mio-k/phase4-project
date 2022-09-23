@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Input } from "../styles";
+import {useNavigate } from "react-router-dom";
 // import { MultiSelect } from "react-multi-select-component";
 
 function NewItemForm({onAddItem, user, tags}) {
@@ -9,7 +10,7 @@ function NewItemForm({onAddItem, user, tags}) {
     user_id: user.id,
     tags:[]
   })
-
+  let navigate = useNavigate();
   const options = [
     {label: "Walking", value: "walking"},
     {label: "Grooming", value: "grooming"},
@@ -53,6 +54,7 @@ function NewItemForm({onAddItem, user, tags}) {
         description: "",
         tags:[]
     })
+    navigate("/itemlist")
   }
 
   return (

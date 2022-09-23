@@ -30,7 +30,7 @@ function onAddDog(dog){
   navigate(`/dogs/${dog.id}`)
 }
   return(
-    <>
+    <div>
       <h2>Member {member.id}</h2>
       <p>Name: {member.firstname} {member.lastname}</p>
       {member.dog
@@ -62,7 +62,7 @@ function onAddDog(dog){
       :
       <p>This member hasn't offered any items yet.</p>
       }
-    </>
+    </div>
     )
 }
 export default User;
