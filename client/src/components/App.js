@@ -59,6 +59,7 @@ function App() {
   return (
     <>
       <NavBar user={user} setUser={setUser} />
+      <p>Welcome to Dog Pod free item exchange! This is where you can post the dog care goods you no longer needs so others can use them.</p>
       <main>
         <Routes>
           <Route path="doglist" element={<DogList/>} />

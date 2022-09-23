@@ -26,14 +26,7 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
         users = User.all
         render json: users, include: :dog
     end
-    def update
-        user = find_user
-        if user.update(user_params)
-            render json: user
-        else
-            render json: {error: "update failed"}, status: :unprocessable_entity
-        end
-    end
+
 
     private
     def authorize

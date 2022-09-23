@@ -6,9 +6,9 @@ Rails.application.routes.draw do
   get "/authorized", to: "users#authenticate"
   
   resources :users, only: [:index, :show, :update]
-  resources :dogs, only: [:index, :show, :create, :update]
+  resources :dogs, only: [:index, :show, :create]
   resources :items
-  resources :tags, only: [:index, :show]
+  resources :tags, only: [:index]
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }

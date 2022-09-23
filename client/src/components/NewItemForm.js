@@ -63,7 +63,7 @@ function NewItemForm({onAddItem, user, tags}) {
     <p>Got a dog care item you don't need anymore? Offer it to your friends.</p>
       Item: <Input type="text" name="name" value={formData.name} onChange={handleChange}/><br/>
       Description: <Input type="text" name="description" value={formData.description} onChange={handleChange}/><br/>
-      <p>Category:
+      <p>Category (Hold Ctrl to multi-select):
         <select multiple={true} name="tags" value={formData.tags} onChange={handleChange}>
           <option value="walking">Walking</option>
           <option value="grooming">Grooming</option>

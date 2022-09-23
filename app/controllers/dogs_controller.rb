@@ -15,11 +15,6 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_resp
         dog = Dog.create!(dog_params)
         render json: dog, status: :created
     end
-    def update
-        dog = find_dog
-        dog.update(dog_params)
-        render json: dog
-    end
 
     private
     def find_dog
