@@ -26,7 +26,10 @@ This app is for the Dog Pod members to offer free dog care items to other  membe
 - Become a member of the Dog Pod
 - Log in and out as a member
 - Create a record of one dog per member
+- View the list of the dog pod members.
 - View each member profile with the information of their dog and the free items they are offering.
+- View the list of the dogs owned by the members.
+- Viwe the list of the free items offered by the members.
 - View each free item and know which member is offering it.
 - Create a new free item to offer to ther members.
 - Edit free items you are offering
